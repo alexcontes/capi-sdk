@@ -19,5 +19,5 @@
             "SEOAudit\\": "SEOAudit/"
         }
     },
-    "minimum-stability": "1.0.1"
+    "minimum-stability": "stable"
 }
