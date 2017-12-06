@@ -1,1 +1,7 @@
-authors.md
+Authors
+=======
+
+A huge thanks to all of our contributors:
+
+
+- Alex Contes
