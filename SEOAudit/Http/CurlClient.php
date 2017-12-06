@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Twilio\Http;
+namespace SEOAudit\Http;
 
 
-use Twilio\Exceptions\EnvironmentException;
+use SEOAudit\Exceptions\EnvironmentException;
 
 class CurlClient implements Client {
     const DEFAULT_TIMEOUT = 60;
@@ -86,7 +86,7 @@ class CurlClient implements Client {
 
             $this->lastResponse = new Response($statusCode, $body, $responseHeaders);
 
-            return $this->lastResponse;
+            return $this->lastResponse->getContent();
         } catch (\ErrorException $e) {
             if (isset($curl) && is_resource($curl)) {
                 curl_close($curl);
@@ -121,12 +121,17 @@ class CurlClient implements Client {
         }
 
         if ($api_key) {
-            $options[CURLOPT_HTTPHEADER][] = 'Authorization: Basic ' . base64_encode("$api_key");
+            $options[CURLOPT_URL] .= "?api_key=".$api_key;
         }
 
         $body = $this->buildQuery($params);
         if ($body) {
-            $options[CURLOPT_URL] .= '?' . $body;
+            if ($api_key) {
+                $options[CURLOPT_URL] .= '&' . $body;
+            }
+            else {
+                $options[CURLOPT_URL] .= '?' . $body;
+            }
         }
 
         switch (strtolower(trim($method))) {

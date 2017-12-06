@@ -36,10 +36,6 @@ class Client {
      * @param string $env Environment to use
      */
     public function __construct($api_key = null, HttpClient $httpClient = null, $env = "production") {
-        if (is_null($environment)) {
-            $environment = $_ENV;
-        }
-
         $this->api_key = $api_key;
         
         if ($httpClient) {
@@ -60,7 +56,7 @@ class Client {
             break;
         }
 
-        $endpoint .= "api/v".VersionInfo::Major;
+        $endpoint .= "api/v".VersionInfo::MAJOR."/";
         $this->endpoint = $endpoint;
     }
 
