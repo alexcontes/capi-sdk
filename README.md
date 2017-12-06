@@ -15,15 +15,15 @@ You can install **seoaudit-sdk** via composer or by downloading the source.
 
 ## Quickstart
 
-### Generate Domdetailer results for a domain
+### Check Domain via Domdetailer
 
 ```php
-// Send an SMS using Twilio's REST API and PHP
+// Check Domain via Domdetailer
 <?php
 $api_key = "XXXXXXXXXXXXXXXXXXXX"; // Your API Key from SEOAudit
 
 $client = new SEOAudit\Rest\Client($api_key);
-$domdetailer_result = $client->domdetailer->get('google.com');
+$domdetailer_result = $client->get('domdetailer/check-domain', ['domain' => 'google.com']);
 
 print $domdetailer_result;
 ```
