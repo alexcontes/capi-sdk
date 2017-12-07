@@ -19,5 +19,9 @@
             "SEOAudit\\": "SEOAudit/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "repositories": [
+        {"type": "composer", "url": "https://repo.packagist.com/web1/"},
+        {"packagist.org": false}
+    ]
 }
