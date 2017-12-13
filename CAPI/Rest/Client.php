@@ -7,18 +7,18 @@
  * /       /
  */
 
-namespace SEOAudit\Rest;
+namespace CAPI\Rest;
 
-use SEOAudit\Exceptions\ConfigurationException;
-use SEOAudit\Exceptions\SEOAuditException;
-use SEOAudit\Http\Client as HttpClient;
-use SEOAudit\Http\CurlClient;
-use SEOAudit\VersionInfo;
+use CAPI\Exceptions\ConfigurationException;
+use CAPI\Exceptions\CAPIException;
+use CAPI\Http\Client as HttpClient;
+use CAPI\Http\CurlClient;
+use CAPI\VersionInfo;
 
 /**
- * A client for accessing the SEOAudit API.
+ * A client for accessing the CAPI API.
  * 
- * @property \SEOAudit\Rest\Domdetailer domdetailer
+ * @property \CAPI\Rest\Domdetailer domdetailer
  */
 class Client {
     const ENV_API_KEY = "SEOAUDIT_ACCOUNT_SID";
@@ -29,10 +29,10 @@ class Client {
     protected $endpoint;
 
     /**
-     * Initializes the SEOAudit Client
+     * Initializes the CAPI Client
      * 
      * @param string $api_key API Key to authenticate with
-     * @param \SEOAudit\Http\Client $httpClient HttpClient, defaults to CurlClient
+     * @param \CAPI\Http\Client $httpClient HttpClient, defaults to CurlClient
      * @param string $env Environment to use
      */
     public function __construct($api_key = null, HttpClient $httpClient = null, $env = "production") {
@@ -48,11 +48,11 @@ class Client {
 
         switch ($env) {
             case "production";
-                $endpoint = "http://seoaudit.us-east-1.elasticbeanstalk.com/";
+                $endpoint = "http://capi.us-east-1.elasticbeanstalk.com/";
             break;
 
             case "dev":
-                $endpoint = "http://seoaudit.dev/";
+                $endpoint = "http://capi.dev/";
             break;
         }
 
@@ -61,21 +61,21 @@ class Client {
     }
 
     /**
-    * Makes a GET request to the SEOAudit API
+    * Makes a GET request to the CAPI API
     */
     public function get($uri, $params = array(), $data = array(), $headers = array(), $api_key = null, $timeout = null) {
         return $this->request("GET", $uri, $params, $data, $headers, $api_key, $timeout);
     }
 
     /**
-    * Makes a POST request to the SEOAudit API
+    * Makes a POST request to the CAPI API
     */
     public function post($uri, $params = array(), $data = array(), $headers = array(), $api_key = null, $timeout = null) {
         return $this->request("POST", $uri, $params, $data, $headers, $api_key, $timeout);
     }
 
     /**
-     * Makes a request to the SEOAudit API using the configured http client
+     * Makes a request to the CAPI API using the configured http client
      * Authentication information is automatically added if none is provided
      * 
      * @param string $method HTTP Method
@@ -85,12 +85,12 @@ class Client {
      * @param string[] $headers HTTP Headers
      * @param string $api_key API Key for Authentication
      * @param int $timeout Timeout in seconds
-     * @return \SEOAudit\Http\Response Response from the SEOAudit API
+     * @return \CAPI\Http\Response Response from the CAPI API
      */
     public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $api_key = null, $timeout = null) {
         $api_key = $api_key ? $api_key : $this->api_key;
 
-        $headers['User-Agent'] = 'seoaudit-sdk/' . VersionInfo::string() .
+        $headers['User-Agent'] = 'capi-sdk/' . VersionInfo::string() .
                                  ' (PHP ' . phpversion() . ')';
         $headers['Accept-Charset'] = 'utf-8';
 
@@ -127,7 +127,7 @@ class Client {
     /**
      * Retrieve the HttpClient
      * 
-     * @return \SEOAudit\Http\Client Current HttpClient
+     * @return \CAPI\Http\Client Current HttpClient
      */
     public function getHttpClient() {
         return $this->httpClient;
@@ -145,7 +145,7 @@ class Client {
     /**
      * Set the HttpClient
      * 
-     * @param \SEOAudit\Http\Client $httpClient HttpClient to use
+     * @param \CAPI\Http\Client $httpClient HttpClient to use
      */
     public function setHttpClient(HttpClient $httpClient) {
         $this->httpClient = $httpClient;

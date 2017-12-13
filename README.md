@@ -1,4 +1,4 @@
-# seoaudit-sdk
+# capi-sdk
 
 ## First release
 
@@ -6,12 +6,12 @@ Just released v1.0.1 which has Domdetailer API included.
 
 ## Installation
 
-You can install **seoaudit-sdk** via composer or by downloading the source.
+You can install **capi-sdk** via composer or by downloading the source.
 
 #### Via Composer:
 
-**seoaudit-sdk** is available on Packagist as the
-[`seoaudit/sdk`](http://packagist.org/packages/seoaudit/sdk) package.
+**capi-sdk** is available on Packagist as the
+[`capi/sdk`](http://packagist.org/packages/capi/sdk) package.
 
 ## Quickstart
 
@@ -20,9 +20,9 @@ You can install **seoaudit-sdk** via composer or by downloading the source.
 ```php
 // Check Domain via Domdetailer
 <?php
-$api_key = "XXXXXXXXXXXXXXXXXXXX"; // Your API Key from SEOAudit
+$api_key = "XXXXXXXXXXXXXXXXXXXX"; // Your API Key from CAPI
 
-$client = new SEOAudit\Rest\Client($api_key);
+$client = new CAPI\Rest\Client($api_key);
 $domdetailer_result = $client->get('domdetailer/check-domain', ['domain' => 'google.com']);
 
 print $domdetailer_result;
@@ -36,13 +36,13 @@ That will output JSON that looks like this:
 
 ## Documentation
 
-The documentation for the SEOAudit REST API is located [here][apidocs].
+The documentation for the CAPI REST API is located [here][apidocs].
 
 The PHP library documentation can be found [here][documentation].
 
 ## Versions
 
-`seoaudit-sdk`'s current version is v1.0.1.
+`capi-sdk`'s current version is v1.0.1.
 
 ## Prerequisites
 

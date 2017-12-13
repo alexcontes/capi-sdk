@@ -1,9 +1,9 @@
 {
-    "name": "seoaudit/sdk",
+    "name": "capi/sdk",
     "type": "library",
-    "description": "SDK for the SEOAudit Centralized API.",
+    "description": "SDK for the CAPI Centralized API.",
     "keywords": ["seo", "audit", "api", "sdk"],
-    "homepage": "https://github.com/alexcontes/seoaudit-sdk",
+    "homepage": "https://github.com/alexcontes/capi-sdk",
     "license": "MIT",
     "authors": [
         {
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SEOAudit\\": "SEOAudit/"
+            "CAPI\\": "CAPI/"
         }
     },
     "minimum-stability": "stable"

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SEOAudit\Http;
+namespace CAPI\Http;
 
 
 class Response {

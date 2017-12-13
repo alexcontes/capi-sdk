@@ -1,10 +1,10 @@
 <?php
 
 
-namespace SEOAudit\Http;
+namespace CAPI\Http;
 
 
-use SEOAudit\Exceptions\EnvironmentException;
+use CAPI\Exceptions\EnvironmentException;
 
 class CurlClient implements Client {
     const DEFAULT_TIMEOUT = 60;

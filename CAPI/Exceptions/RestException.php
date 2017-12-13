@@ -1,10 +1,10 @@
 <?php
 
 
-namespace SEOAudit\Exceptions;
+namespace CAPI\Exceptions;
 
 
-class RestException extends SEOAuditException {
+class RestException extends CAPIException {
     protected $statusCode;
 
     /**
